@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by ashizawa on 2022/07/14.
-//
-
-import Foundation
+import CoreGraphics
 
 public typealias Scale = (x: CGFloat, y: CGFloat)
