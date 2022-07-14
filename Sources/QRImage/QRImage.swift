@@ -16,7 +16,7 @@ public struct QRImage: View {
         
         #if !os(macOS)
         if let cgImage = makeUIImage() {
-            Image(cgImage: cgImage)
+            Image(uiImage: cgImage)
         }
         #else
         if let nsImage = makeNSImage() {
