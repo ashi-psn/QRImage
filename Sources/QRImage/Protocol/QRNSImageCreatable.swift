@@ -1,3 +1,4 @@
+#if !os(iOS)
 import CoreImage
 import AppKit
 
@@ -14,3 +15,5 @@ extension QRNSImageCreatable {
         return image
     }
 }
+#endif
+
