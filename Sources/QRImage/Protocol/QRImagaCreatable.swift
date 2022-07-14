@@ -2,10 +2,6 @@ import Foundation
 import CoreImage
 import SwiftUI
 
-#if !os(macOS)
-import UIKit
-#endif
-
 protocol QRImagaCreatable {
     var qrString: String { get }
     var scale: Scale { get }
@@ -30,35 +26,5 @@ extension QRImagaCreatable {
 
         guard let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent) else { return nil }
         return cgImage
-    }
-}
-
-#if !os(macOS)
-protocol QrUIImageCreatable: QRImagaCreatable {
-    func makeUIImage() -> UIImage?
-}
-
-extension QrUIImageCreatable {
-    func makeUIImage() -> UIImage? {
-        guard let cgImage = makeCGImage() else { return nil }
-        
-        let image = UImage(cgImage: cgImage)
-        
-        return image
-    }
-}
-#endif
-
-protocol QRNSImageCreatable: QRImagaCreatable {
-    func makeNSImage() -> NSImage?
-}
-
-extension QRNSImageCreatable {
-    func makeNSImage() -> NSImage? {
-        guard let cgImage = makeCGImage() else { return nil }
-        
-        let image = NSImage(cgImage: cgImage, size: CGSize(width: cgImage.width, height: cgImage.height))
-        
-        return image
     }
 }
